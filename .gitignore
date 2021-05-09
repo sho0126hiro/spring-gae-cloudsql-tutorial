@@ -1,0 +1,5 @@
+src/main/resources/credentials
+.DS_Store
+build
+.gradle
+.idea

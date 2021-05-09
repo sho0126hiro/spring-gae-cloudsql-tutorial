@@ -1,0 +1,22 @@
+version: '3'
+services:
+  app:
+    image: openjdk:11
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../:/app
+    working_dir: /app
+    command: ./gradlew bootRun
+    environment:
+      - DATASOURCE=jdbc:mysql://db:3306/db
+  db:
+    image: "gcr.io/cloudsql-docker/gce-proxy"
+    command:
+      ["/cloud_sql_proxy",
+       "-instances=consummate-web-312902:asia-northeast1:ktor-tutorial-db=tcp:0.0.0.0:3306",
+       "-credential_file=/config/sql-admin.json"]
+    volumes:
+      - "../credentials/cloud-sql-key.json:/config/sql-admin.json"
+    ports:
+      - "3306:3306"

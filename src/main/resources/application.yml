@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://34.84.111.114/mysql
+    username: root
+    password: tutorial-db
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      data-source-properties:
+        socketFactory: com.google.cloud.sql.mysql.SocketFactory
+        cloudSqlInstance: consummate-web-312902:asia-northeast1:tutorial-db
+    dialect: com.google.cloud.spanner.hibernate.SpannerDialect
+    ddl-auto: create
+
+  jpa:
+    database: MYSQL
+    database-platform: org.hibernate.dialect.MySQL57Dialect
+    show-sql: true
+    hibernate:
+      dialect: org.hibernate.dialect.MySQL57Dialect
+      ddl-auto: create
+
+  cloud:
+    gcp:
+      sql:
+        database-name: test_database
+        instance-connection-name: consummate-web-312902:asia-northeast1:tutorial-db
+      credentials:
+        location: classpath:./credentials/cloud-sql-key.json

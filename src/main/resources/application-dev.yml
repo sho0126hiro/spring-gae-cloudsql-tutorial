@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://35.243.93.183/mysql
+    username: root
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      data-source-properties:
+        socketFactory: com.google.cloud.sql.mysql.SocketFactory
+        cloudSqlInstance: consummate-web-312902:asia-northeast1:ktor-tutorial-db
+  cloud:
+    gcp:
+      sql:
+        database-name: test_database
+        instance-connection-name: consummate-web-312902:asia-northeast1:ktor-tutorial-db
